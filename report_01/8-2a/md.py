@@ -54,7 +54,7 @@ def initial():
     global dt
     dt = 0.01
     global dt2
-    dt = dt * dt
+    dt2 = dt * dt
 
     response = ""
     global N
@@ -255,8 +255,9 @@ def Verlet():
         vx[i] = vx[i] + 0.5 * ax[i] * dt
         vy[i] = vy[i] + 0.5 * ay[i] * dt
         ke = ke + vx[i] * vx[i] + vy[i] * vy[i]
-        ke = 0.5 * ke
-        t = t + 1
+
+    ke = 0.5 * ke
+    t = t + dt
 
 
 def show_output():
