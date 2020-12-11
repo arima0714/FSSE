@@ -309,8 +309,5 @@ while ncum <= 100000:
         show_output()
     if ncum % 100000 == 0:
         plt.scatter(x, y)
-        print(f"x:{x}")
-        print(f"y:{y}")
-        #         print(f"vx:{vx}")
-        #         print(f"vy:{vy}")
         plt.show()
+        plt.savefig(f"a_{ncum}.png")
