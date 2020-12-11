@@ -303,10 +303,7 @@ while ncum <= 100000:
     #     show_positions(flag)
     Verlet()
     ncum = ncum + 1
-    if ncum == 1:
-        show_output()
-    if ncum % 10000 == 0:
-        show_output()
+    show_output()
     if ncum % 100000 == 0:
         plt.scatter(x, y)
         plt.show()
