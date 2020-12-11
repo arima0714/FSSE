@@ -273,7 +273,7 @@ def show_output():
     global Ly
 
     if(ncum == 1):
-        print("ncum, t, E, mean_ke/N, p, ke, pe")
+        print("ncum,t,E,mean_ke/N,p,ke,pe")
 
     print_str = ""
     print_str += "" + str(ncum)
