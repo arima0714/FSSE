@@ -54,8 +54,8 @@ def initial():
     global dt
     dt = 0.01
     global dt2
-    dt= dt * dt
-    
+    dt = dt * dt
+
     response = ""
     global N
     N = 16
@@ -63,33 +63,89 @@ def initial():
     Lx = 6
     global Ly
     Ly = 6
-    
+
     DATA = [
-        1.09,0.98,-0.33,0.78,3.12,5.25,0.12,-1.19
-      , 0.08,2.38,-0.08,-0.10,0.54,4.08,-1.94,-0.56
-      , 2.52,4.39,0.75,0.34,3.03,2.94,1.70,-1.08
-      , 4.25,3.01,0.84,0.47,0.89,3.11,-1.04,0.06
-      , 2.76,0.31,1.64,1.36,3.14,1.91,0.38,-1.24
-      , 0.23,5.71,-1.58,0.55,1.91,2.46,-1.55,-0.16
-      , 4.77,0.96,-0.23,-0.83,5.10,4.63,-0.31,0.65
-      , 4.97,5.88,1.18,1.48,3.90,0.20,0.46,-0.51
+        1.09,
+        0.98,
+        -0.33,
+        0.78,
+        3.12,
+        5.25,
+        0.12,
+        -1.19,
+        0.08,
+        2.38,
+        -0.08,
+        -0.10,
+        0.54,
+        4.08,
+        -1.94,
+        -0.56,
+        2.52,
+        4.39,
+        0.75,
+        0.34,
+        3.03,
+        2.94,
+        1.70,
+        -1.08,
+        4.25,
+        3.01,
+        0.84,
+        0.47,
+        0.89,
+        3.11,
+        -1.04,
+        0.06,
+        2.76,
+        0.31,
+        1.64,
+        1.36,
+        3.14,
+        1.91,
+        0.38,
+        -1.24,
+        0.23,
+        5.71,
+        -1.58,
+        0.55,
+        1.91,
+        2.46,
+        -1.55,
+        -0.16,
+        4.77,
+        0.96,
+        -0.23,
+        -0.83,
+        5.10,
+        4.63,
+        -0.31,
+        0.65,
+        4.97,
+        5.88,
+        1.18,
+        1.48,
+        3.90,
+        0.20,
+        0.46,
+        -0.51,
     ]
-    
+
     global x
     global y
     global vx
     global vy
-    
+
     for i in range(N):
-        x[i] = DATA[4*i+0]
-        y[i] = DATA[4*i+1]
-        vx[i] = DATA[4*i+2]
-        vy[i] = DATA[4*i+3]
-    
+        x[i] = DATA[4 * i + 0]
+        y[i] = DATA[4 * i + 1]
+        vx[i] = DATA[4 * i + 2]
+        vy[i] = DATA[4 * i + 3]
+
     global ke
     ke = 0
     for i in range(N):
-        ke = ke + vx[i]* vx[i] + vy[i]* vy[i]
+        ke = ke + vx[i] * vx[i] + vy[i] * vy[i]
     ke = 0.5 * ke
     global area
     area = Lx * Ly
@@ -100,17 +156,17 @@ def initial():
     global pecum
     pecum = 0
     global vcum
-    vcum = 0   
+    vcum = 0
 
 
 def separation(ds, L):
-    if (ds > 0.5 * L):
+    if ds > 0.5 * L:
         return ds - L
-    elif (ds < -0.5 * L):
+    elif ds < -0.5 * L:
         return ds + L
     else:
         return ds
-    
+
 
 def force():
     global dx
@@ -118,14 +174,14 @@ def force():
     global fxij
     global fyij
     global pot
-    r2 = dx*dx + dy*dy
-    rm2 = 1/r2
+    r2 = dx * dx + dy * dy
+    rm2 = 1 / r2
     rm6 = rm2 * rm2 * rm2
     f_over_r = 24 * rm6 * (2 * rm6 - 1) * rm2
     fxij = f_over_r * dx
     fyij = f_over_r * dy
     pot = 4 * (rm6 * rm6 - rm6)
-    
+
 
 def accel():
     global pe
@@ -142,13 +198,13 @@ def accel():
     global dx
     global dy
     global pot
-    
+
     for i in range(N):
         ax[i] = 0
         ay[i] = 0
-    
-    for i in range(N-1):
-        for j in range(i+1, N):
+
+    for i in range(N - 1):
+        for j in range(i + 1, N):
             dx = separation(x[i] - x[j], Lx)
             dy = separation(y[i] - y[j], Ly)
             force()
@@ -157,17 +213,17 @@ def accel():
             ax[j] = ax[j] - fxij
             ay[j] = ay[j] - fyij
             pe = pe + pot
-            virial = virial + dx*fxij + dy*fyij
-            
+            virial = virial + dx * fxij + dy * fyij
+
 
 def pbc(pos, L):
-    if (pos < L):
-        return (pos+L)
-    elif(pos > L):
-        return (pos-L)
+    if pos < 0:
+        return pos + L
+    elif pos > L:
+        return pos - L
     else:
-        return (pos)
-    
+        return pos
+
 
 def Verlet():
     global x
@@ -183,7 +239,7 @@ def Verlet():
     global dt2
     global ke
     global t
-    
+
     for i in range(N):
         xnew = x[i] + vx[i] * dt + 0.5 * ax[i] * dt2
         ynew = y[i] + vy[i] * dt + 0.5 * ay[i] * dt2
@@ -191,9 +247,9 @@ def Verlet():
         vy[i] = vy[i] + 0.5 * ay[i] * dt
         x[i] = pbc(xnew, Lx)
         y[i] = pbc(ynew, Ly)
-        
+
     accel()
-        
+
     ke = 0
     for i in range(N):
         vx[i] = vx[i] + 0.5 * ax[i] * dt
@@ -201,7 +257,7 @@ def Verlet():
         ke = ke + vx[i] * vx[i] + vy[i] * vy[i]
         ke = 0.5 * ke
         t = t + 1
-        
+
 
 def show_output():
     global t
@@ -217,23 +273,22 @@ def show_output():
     global Ly
 
     print_str = ""
-    print_str += "ncum:"+str(ncum)
-    print_str += ", t:"+str(t)
+    print_str += "ncum:" + str(ncum)
+    print_str += ", t:" + str(t)
     E = ke + pe
-    print_str += ", E:"+'{}'.format(E)
+    print_str += ", E:" + "{}".format(E)
     kecum = kecum + ke
     vcum = vcum + virial
     mean_ke = kecum / ncum
     p = mean_ke + (0.5 * vcum) / ncum
     p = p / area
-    print_str += ", mean_ke/N:"+'{:.3E}'.format(mean_ke/N)
-    print_str += ", p:"+'{:.3E}'.format(p)
-    
-    print_str += ", ke:"+'{}'.format(ke)
-    print_str += ", pe:"+'{}'.format(pe)
-    
+    print_str += ", mean_ke/N:" + "{:.3E}".format(mean_ke / N)
+    print_str += ", p:" + "{:.3E}".format(p)
+
+    print_str += ", ke:" + "{}".format(ke)
+    print_str += ", pe:" + "{}".format(pe)
+
     print(print_str)
-    
 
 
 initial()
@@ -241,17 +296,16 @@ accel()
 E = ke + pe
 ncum = 0
 flag = True
-while (ncum <= 100000):
-#     show_positions(flag)
+while ncum <= 100000:
+    #     show_positions(flag)
     Verlet()
     ncum = ncum + 1
-    if(ncum % 10000 == 0):
+    if ncum % 10000 == 0:
         show_output()
-    if(ncum % 100000 == 0):
+    if ncum % 100000 == 0:
         plt.scatter(x, y)
         print(f"x:{x}")
         print(f"y:{y}")
-#         print(f"vx:{vx}")
-#         print(f"vy:{vy}")
+        #         print(f"vx:{vx}")
+        #         print(f"vy:{vy}")
         plt.show()
-        
