@@ -272,21 +272,24 @@ def show_output():
     global Lx
     global Ly
 
+    if(ncum == 1):
+        print("ncum, t, E, mean_ke/N, p, ke, pe")
+
     print_str = ""
-    print_str += "ncum:" + str(ncum)
-    print_str += ", t:" + str(t)
+    print_str += "" + str(ncum)
+    print_str += ", " + str(t)
     E = ke + pe
-    print_str += ", E:" + "{}".format(E)
+    print_str += ", " + "{}".format(E)
     kecum = kecum + ke
     vcum = vcum + virial
     mean_ke = kecum / ncum
     p = mean_ke + (0.5 * vcum) / ncum
     p = p / area
-    print_str += ", mean_ke/N:" + "{:.3E}".format(mean_ke / N)
-    print_str += ", p:" + "{:.3E}".format(p)
+    print_str += ", " + "{:.3E}".format(mean_ke / N)
+    print_str += ", " + "{:.3E}".format(p)
 
-    print_str += ", ke:" + "{}".format(ke)
-    print_str += ", pe:" + "{}".format(pe)
+    print_str += ", " + "{}".format(ke)
+    print_str += ", " + "{}".format(pe)
 
     print(print_str)
 
@@ -300,6 +303,8 @@ while ncum <= 100000:
     #     show_positions(flag)
     Verlet()
     ncum = ncum + 1
+    if ncum == 1:
+        show_output()
     if ncum % 10000 == 0:
         show_output()
     if ncum % 100000 == 0:
