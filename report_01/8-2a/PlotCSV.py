@@ -8,11 +8,9 @@ print(Output)
 
 columns = Output.columns.values
 print(columns)
-X = columns[0]
-Y = columns[1]
 
-col_x = Output[X]
-col_y = Output[Y]
+col_x = Output["t"]
+col_y = Output["E"]
 
 plt.plot(col_x, col_y)
 plt.savefig("./PlotCSV.png")
