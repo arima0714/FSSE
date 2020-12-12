@@ -1,6 +1,7 @@
 import sys
 import time
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 
 
 # 変数の宣言
@@ -294,6 +295,8 @@ def show_output():
 
     print(print_str)
 
+fig = plt.figure()
+ims = []
 
 initial()
 accel()
@@ -305,7 +308,16 @@ while ncum <= 100000:
     Verlet()
     ncum = ncum + 1
     show_output()
+
+    if ncum < 1000:
+        im = plt.scatter(x, y)
+        print(type(im))
+        ims.append(im)
+
     if ncum % 100000 == 0:
         plt.scatter(x, y)
         plt.show()
         plt.savefig(f"a_{ncum}.png")
+
+ani = animation.ArtistAnimation(fig, ims)
+ani.save("./a_0to1000.gif")
