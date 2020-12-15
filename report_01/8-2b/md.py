@@ -61,7 +61,7 @@ def initial():
     global N
     N = 16
     global Lx
-    Lx = 6
+    Lx = 12
     global Ly
     Ly = 6
 
