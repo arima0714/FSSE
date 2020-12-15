@@ -303,21 +303,14 @@ accel()
 E = ke + pe
 ncum = 0
 flag = True
-while ncum <= 100000:
+while ncum <= 1000:
     #     show_positions(flag)
     Verlet()
     ncum = ncum + 1
     show_output()
 
-    if ncum < 1000:
-        im = plt.scatter(x, y)
-        print(type(im))
-        ims.append(im)
-
-    if ncum % 100000 == 0:
+    if ncum % 100 == 0:
+        plt.figure()
         plt.scatter(x, y)
         plt.show()
         plt.savefig(f"a_{ncum}.png")
-
-ani = animation.ArtistAnimation(fig, ims)
-ani.save("./a_0to1000.gif")
