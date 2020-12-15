@@ -313,7 +313,7 @@ while ncum <= 1000:
         plt.figure()
         plt.scatter(x, y)
         plt.show()
-        plt.savefig(f"a_{ncum}.png")
+        plt.savefig(f"b_{ncum}.png")
         plt.clf()
         plt.close()
 
