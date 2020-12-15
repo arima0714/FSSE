@@ -309,8 +309,11 @@ while ncum <= 1000:
     ncum = ncum + 1
     show_output()
 
-    if ncum % 100 == 0:
+    if (ncum % 100 == 0) or (ncum < 100):
         plt.figure()
         plt.scatter(x, y)
         plt.show()
         plt.savefig(f"a_{ncum}.png")
+        plt.clf()
+        plt.close()
+
