@@ -23,3 +23,11 @@ sum_t = 0
 for num in col_y:
     sum_t == num
     time_average.append(sum_t)
+
+print(f"len(time_average) = {len(time_average)}, len(col_y) = {len(col_y)} ... これらの値が同値であることを期待している")
+
+for t in col_y:
+    if t == 0:
+        continue
+    else:
+        pass
