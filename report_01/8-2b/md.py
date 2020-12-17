@@ -314,6 +314,8 @@ while ncum <= 1000:
     if (ncum % 100 == 0) or (ncum < 100):
         plt.figure()
         plt.scatter(x, y)
+        plt.xlim([0, 12])
+        plt.ylim([0, 6])
         plt.show()
         plt.savefig(f"../images/b_{ncum}.png")
         plt.clf()
