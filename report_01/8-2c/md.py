@@ -61,7 +61,7 @@ def initial():
     global N
     N = 16
     global Lx
-    Lx = 12
+    Lx = 6
     global Ly
     Ly = 6
 
@@ -142,8 +142,6 @@ def initial():
         y[i] = DATA[4 * i + 1]
         vx[i] = DATA[4 * i + 2]
         vy[i] = DATA[4 * i + 3]
-        if(i >= 8):
-            x[i] = x[i] + 6
 
     global ke
     ke = 0
@@ -264,9 +262,10 @@ def Verlet():
 
 def return_n(t):
     global x
+    global Lx
     n = 0
     for content_x in x:
-        if content_x <= 6:
+        if content_x <= Lx/2:
             n += 1
     return(n)
 
