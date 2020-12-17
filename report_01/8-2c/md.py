@@ -277,7 +277,7 @@ def show_output():
     global Ly
 
     if(ncum == 1):
-        print("ncum,t,E,mean_ke/N,p,ke,pe")
+        print("ncum,t,E,mean_ke/N,p,ke,pe,n(t)")
 
     print_str = ""
     print_str += "" + str(ncum)
@@ -294,6 +294,7 @@ def show_output():
 
     print_str += ", " + "{}".format(ke)
     print_str += ", " + "{}".format(pe)
+    print_str += ", " + "{}".format(0)
 
     print(print_str)
 
@@ -317,7 +318,7 @@ while ncum <= 1000:
         plt.xlim([0, 12])
         plt.ylim([0, 6])
         plt.show()
-        plt.savefig(f"../images/b_{ncum}.png")
+        plt.savefig(f"../images/c_{ncum}.png")
         plt.clf()
         plt.close()
 

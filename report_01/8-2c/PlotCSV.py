@@ -10,7 +10,7 @@ columns = Output.columns.values
 print(columns)
 
 col_x = Output["t"]
-col_y = Output["E"]
+col_y = Output["n(t)"]
 
 plt.plot(col_x, col_y)
 plt.savefig("./PlotCSV.png")
