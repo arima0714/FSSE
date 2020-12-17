@@ -142,6 +142,8 @@ def initial():
         y[i] = DATA[4 * i + 1]
         vx[i] = DATA[4 * i + 2]
         vy[i] = DATA[4 * i + 3]
+        if(i >= 8):
+            x[i] = x[i] + 6
 
     global ke
     ke = 0
