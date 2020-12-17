@@ -262,6 +262,13 @@ def Verlet():
     ke = 0.5 * ke
     t = t + dt
 
+def return_n(t):
+    global x
+    n = 0
+    for content_x in x:
+        if content_x <= 6:
+            n += 1
+    return(n)
 
 def show_output():
     global t
@@ -294,7 +301,7 @@ def show_output():
 
     print_str += ", " + "{}".format(ke)
     print_str += ", " + "{}".format(pe)
-    print_str += ", " + "{}".format(0)
+    print_str += ", " + "{}".format(return_n(t))
 
     print(print_str)
 
@@ -306,7 +313,7 @@ accel()
 E = ke + pe
 ncum = 0
 flag = True
-while ncum <= 1000:
+while ncum <= 100000:
     #     show_positions(flag)
     Verlet()
     ncum = ncum + 1
