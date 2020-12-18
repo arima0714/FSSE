@@ -193,8 +193,8 @@ def return_n(t):
     global x
     global Lx
     n = 0
-    for content_x in x:
-        if content_x <= Lx/2:
+    for i in range(N):
+        if x[i] <= Lx/2:
             n += 1
     return(n)
 
