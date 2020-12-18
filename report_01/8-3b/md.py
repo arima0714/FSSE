@@ -139,6 +139,9 @@ def initial():
         vx[i] = 1
         vy[i] = 0
 
+    vx[5] = 0.99
+    vy[5] = 0.01
+
     global ke
     ke = 0
     for i in range(N):
@@ -299,7 +302,7 @@ accel()
 E = ke + pe
 ncum = 0
 flag = True
-while ncum <= 100:
+while ncum <= 10000:
     #     show_positions(flag)
     Verlet()
     ncum = ncum + 1
@@ -311,7 +314,7 @@ while ncum <= 100:
         plt.xlim([0, 12])
         plt.ylim([0, 6])
         plt.show()
-        plt.savefig(f"../images/a_{ncum}.png")
+        plt.savefig(f"../images/8_3_b_{ncum}.png")
         plt.clf()
         plt.close()
 
