@@ -2,6 +2,31 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 
+### 時間平均を出力するライブラリ化する前の関数
+### 引数x,yは共にリスト型
+def plot_TimeAverage(x :list, y :list, file_name :str):
+    times = x
+    n_result = y
+
+    time_average = []
+    sum_t = 0
+    for num in n_result:
+        sum_t += num
+        time_average.append(sum_t)
+
+    for i in range(len(times)):
+        if times[i] == 0:
+            continue
+        time_average[i] /= times[i]
+
+    plt.figure()
+    plt.plot(times, time_average)
+    plt.xlabel("t")
+    plt.ylabel("time_average")
+    plt.savefig(file_name)
+
+###
+
 Output = pd.read_csv("./a_output.csv")
 
 Output.set_index('ncum', inplace=True)
