@@ -2,8 +2,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 
-### 時間平均を出力するライブラリ化する前の関数
-### 引数x,yは共にリスト型
 def plot_TimeAverage(x :list, y :list, file_name :str):
     times = x
     n_result = y
@@ -24,8 +22,6 @@ def plot_TimeAverage(x :list, y :list, file_name :str):
     plt.xlabel("t")
     plt.ylabel("time_average")
     plt.savefig(file_name)
-
-###
 
 Output = pd.read_csv("./a_output.csv")
 
@@ -57,24 +53,26 @@ plt.ylabel("n(t)")
 plt.savefig("./PlotCSV.png")
 
 
-time_average = []
-sum_t = 0
-for num in col_y:
-    sum_t += num
-    time_average.append(sum_t)
+# time_average = []
+# sum_t = 0
+# for num in col_y:
+#     sum_t += num
+#     time_average.append(sum_t)
 
-print(f"type(time_average) = {type(time_average)}, type(col_x) = {type(col_x)}")
-print(f"len(time_average) = {len(time_average)}, len(col_y) = {len(col_x)} ... これらの値が同値であることを期待している")
+# print(f"type(time_average) = {type(time_average)}, type(col_x) = {type(col_x)}")
+# print(f"len(time_average) = {len(time_average)}, len(col_y) = {len(col_x)} ... これらの値が同値であることを期待している")
 
-times = col_x.tolist()
+# times = col_x.tolist()
 
-for i in range(len(times)):
-    if times[i] == 0:
-        continue
-    time_average[i] /= times[i]
+# for i in range(len(times)):
+#     if times[i] == 0:
+#         continue
+#     time_average[i] /= times[i]
 
-plt.figure()
-plt.plot(times, time_average)
-plt.xlabel("t")
-plt.ylabel("time_average")
-plt.savefig("./PlotCSV2.png")
+# plt.figure()
+# plt.plot(times, time_average)
+# plt.xlabel("t")
+# plt.ylabel("time_average")
+# plt.savefig("./PlotCSV2.png")
+
+plot_TimeAverage(col_x.tolist(), col_y.tolist(), "./PlotCSV2.png")
