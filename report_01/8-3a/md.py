@@ -241,7 +241,7 @@ accel()
 E = ke + pe
 ncum = 0
 flag = True
-while ncum <= 100:
+while ncum <= 100000:
     #     show_positions(flag)
     Verlet()
     ncum = ncum + 1
