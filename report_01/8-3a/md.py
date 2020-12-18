@@ -59,11 +59,11 @@ def initial():
 
     response = ""
     global N
-    N = 16
+    N = 11
     global Lx
-    Lx = 12
+    Lx = 10
     global Ly
-    Ly = 6
+    Ly = 10
 
     DATA = [
         1.09,
@@ -138,12 +138,10 @@ def initial():
     global vy
 
     for i in range(N):
-        x[i] = DATA[4 * i + 0]
-        y[i] = DATA[4 * i + 1]
-        vx[i] = DATA[4 * i + 2]
-        vy[i] = DATA[4 * i + 3]
-        if(i >= 8):
-            x[i] = x[i] + 6
+        x[i] = Lx/2
+        y[i] = (i + 1 - 0.5) * Ly/N
+        vx[i] = 1
+        vy[i] = 0
 
     global ke
     ke = 0
