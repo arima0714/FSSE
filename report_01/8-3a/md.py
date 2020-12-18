@@ -315,7 +315,7 @@ while ncum <= 100000:
         plt.xlim([0, Lx])
         plt.ylim([0, Ly])
         plt.show()
-        plt.savefig(f"../images/a_{ncum}.png")
+        plt.savefig(f"../images/8_3_a_{ncum}.png")
         plt.clf()
         plt.close()
 
