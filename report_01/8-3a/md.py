@@ -35,7 +35,6 @@ kecum = 0
 pecum = 0
 vcum = 0
 area = 0
-pbc = 0
 
 pe = 0
 virial = 0
@@ -50,87 +49,17 @@ pot = 0
 
 
 def initial():
-    global pbc
-    abc = 0
     global dt
     dt = 0.01
     global dt2
     dt2 = dt * dt
 
-    response = ""
     global N
-    N = 16
+    N = 11
     global Lx
-    Lx = 6
+    Lx = 10
     global Ly
-    Ly = 6
-
-    DATA = [
-        1.09,
-        0.98,
-        -0.33,
-        0.78,
-        3.12,
-        5.25,
-        0.12,
-        -1.19,
-        0.08,
-        2.38,
-        -0.08,
-        -0.10,
-        0.54,
-        4.08,
-        -1.94,
-        -0.56,
-        2.52,
-        4.39,
-        0.75,
-        0.34,
-        3.03,
-        2.94,
-        1.70,
-        -1.08,
-        4.25,
-        3.01,
-        0.84,
-        0.47,
-        0.89,
-        3.11,
-        -1.04,
-        0.06,
-        2.76,
-        0.31,
-        1.64,
-        1.36,
-        3.14,
-        1.91,
-        0.38,
-        -1.24,
-        0.23,
-        5.71,
-        -1.58,
-        0.55,
-        1.91,
-        2.46,
-        -1.55,
-        -0.16,
-        4.77,
-        0.96,
-        -0.23,
-        -0.83,
-        5.10,
-        4.63,
-        -0.31,
-        0.65,
-        4.97,
-        5.88,
-        1.18,
-        1.48,
-        3.90,
-        0.20,
-        0.46,
-        -0.51,
-    ]
+    Ly = 10
 
     global x
     global y
@@ -138,10 +67,10 @@ def initial():
     global vy
 
     for i in range(N):
-        x[i] = DATA[4 * i + 0]
-        y[i] = DATA[4 * i + 1]
-        vx[i] = DATA[4 * i + 2]
-        vy[i] = DATA[4 * i + 3]
+        x[i] = Lx/2
+        y[i] = (i + 0.5)*Ly/N
+        vx[i] = 1
+        vy[i] = 0
 
     global ke
     ke = 0
@@ -312,7 +241,7 @@ accel()
 E = ke + pe
 ncum = 0
 flag = True
-while ncum <= 1000000:
+while ncum <= 100:
     #     show_positions(flag)
     Verlet()
     ncum = ncum + 1
@@ -321,10 +250,10 @@ while ncum <= 1000000:
     if (ncum % 100 == 0) or (ncum < 100):
         plt.figure()
         plt.scatter(x, y)
-        plt.xlim([0, 12])
-        plt.ylim([0, 6])
+        plt.xlim([0, Lx])
+        plt.ylim([0, Ly])
         plt.show()
-        plt.savefig(f"../images/c_{ncum}.png")
+        plt.savefig(f"../images/8_3_a_{ncum}.png")
         plt.clf()
         plt.close()
 
