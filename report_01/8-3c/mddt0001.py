@@ -332,7 +332,7 @@ while True:
             vx[i] = -1 * vx[i]
             vy[i] = -1 * vy[i]
 
-    if ( tmp_t > 1.0):
+    if ( t > 1.0):
         plt.figure()
         plt.scatter(x, y)
         plt.xlim([0, Lx])
