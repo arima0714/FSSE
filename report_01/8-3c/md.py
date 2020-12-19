@@ -282,4 +282,4 @@ for i in range(ncum):
     im = Image.open(file_name)
     images.append(im)
 
-images[0].save('./out.gif', save_all=True, append_images=images[1:], loop=0, duration=30)
+images[0].save('./t05.gif', save_all=True, append_images=images[1:], loop=0, duration=30)
