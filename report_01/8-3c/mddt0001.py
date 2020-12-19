@@ -326,7 +326,6 @@ while True:
     if ( tmp_t > 1.0):
         break
 
-    if (ncum % 100 == 0) or (ncum < 100):
         plt.figure()
         plt.scatter(x, y)
         plt.xlim([0, Lx])
@@ -348,4 +347,4 @@ for i in range(ncum):
     im = Image.open(file_name)
     images.append(im)
 
-images[0].save('./t05dt0001.gif', save_all=True, append_images=images[1:], loop=0, duration=30)
+images[0].save('./t05dt0001.gif', save_all=True, append_images=images[1:], loop=0)

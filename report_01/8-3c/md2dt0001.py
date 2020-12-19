@@ -323,7 +323,7 @@ while True:
             vx[i] = -1 * vx[i]
             vy[i] = -1 * vy[i]
 
-    if ( tmp_t > 2.0):
+    if ( tmp_t >= 2.0):
         break
 
     plt.figure()
