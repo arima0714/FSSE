@@ -246,7 +246,7 @@ accel()
 E = ke + pe
 ncum = 0
 flag = True
-while ncum <= 100000:
+while True:
     #     show_positions(flag)
     Verlet()
     ncum = ncum + 1
@@ -257,7 +257,7 @@ while ncum <= 100000:
             vx[i] = -1 * vx[i]
             vy[i] = -1 * vy[i]
 
-    if ( t == 1.0):
+    if ( t > 1.0):
         break
 
     if (ncum % 100 == 0) or (ncum < 100):
@@ -266,7 +266,7 @@ while ncum <= 100000:
         plt.xlim([0, Lx])
         plt.ylim([0, Ly])
         plt.show()
-        plt.savefig(f"../images/8_3_b_{ncum}.png")
+        plt.savefig(f"../images/8_3_c_{ncum}.png")
         plt.clf()
         plt.close()
 
