@@ -83,13 +83,14 @@ main ()
 #ifdef DEBUG
   printf ("DEBUG mode \n");
 #endif
-
-  printf("X, Y\n");
+  double E_per_m = 0.5 * ((vz_i[X] * vz_i[X]) + (vz_i[Y] * vz_i[Y])) - GM;
+  printf("X,Y,E/m\n");
 
   for (i = 0; i <= imax; i++)
     {
       EulerRichardson (az_m, vz_i, z_i, dt, GM, r);
-      printf ("%f, %f\n", z_i[0], z_i[1]);
+      E_per_m = 0.5 * ((vz_i[X] * vz_i[X]) + (vz_i[Y] * vz_i[Y])) - GM;
+      printf ("%f, %f, %f\n", z_i[0], z_i[1], E_per_m);
     }
 
   return 0;
