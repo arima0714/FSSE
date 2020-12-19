@@ -316,6 +316,15 @@ while True:
     ncum = ncum + 1
     show_output()
 
+    plt.figure()
+    plt.scatter(x, y)
+    plt.xlim([0, Lx])
+    plt.ylim([0, Ly])
+    plt.show()
+    plt.savefig(f"../images/8_3_c_first.png")
+    plt.clf()
+    plt.close()
+
     tmp_t = t
     tmp_t = int(tmp_t * 10)/10
     if ( tmp_t == 0.5):
@@ -324,6 +333,14 @@ while True:
             vy[i] = -1 * vy[i]
 
     if ( tmp_t > 1.0):
+        plt.figure()
+        plt.scatter(x, y)
+        plt.xlim([0, Lx])
+        plt.ylim([0, Ly])
+        plt.show()
+        plt.savefig(f"../images/8_3_c_last.png")
+        plt.clf()
+        plt.close()
         break
 
     plt.figure()
