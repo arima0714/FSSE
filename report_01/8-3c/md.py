@@ -270,3 +270,16 @@ while True:
         plt.clf()
         plt.close()
 
+### 生成した画像からgifを生成する
+from PIL import Image
+
+images = []
+
+for i in range(ncum):
+    if i == 0:
+        continue
+    file_name = f"../images/8_3_c_{i}.png"
+    im = Image.open(file_name)
+    images.append(im)
+
+images[0].save('./out.gif', save_all=True, append_images=images[1:], loop=0, duration=30)
