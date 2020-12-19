@@ -26,5 +26,6 @@ mod = LinearRegression()
 mod_lin = mod.fit(x, y)
 y_lin_fit = mod_lin.predict(x)
 plt.plot(x, y_lin_fit, color = 'r', linewidth=1.5)
-
+plt.xlabel("t")
+plt.ylabel("all energy")
 plt.savefig("./PlotCSV.png")
