@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#define IMAX 1000
+#define IMAX 10000
 #define DT 0.001
 
 #define X 0
