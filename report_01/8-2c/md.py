@@ -312,7 +312,7 @@ accel()
 E = ke + pe
 ncum = 0
 flag = True
-while ncum <= 10000:
+while ncum <= 1000:
     #     show_positions(flag)
     Verlet()
     ncum = ncum + 1
@@ -320,8 +320,8 @@ while ncum <= 10000:
 
     plt.figure()
     plt.scatter(x, y)
-    plt.xlim([0, 12])
-    plt.ylim([0, 6])
+    plt.xlim([0, Lx])
+    plt.ylim([0, Ly])
     plt.show()
     plt.savefig(f"../images/8-2c_{ncum}.png")
     plt.clf()
