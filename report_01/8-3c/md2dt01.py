@@ -317,7 +317,7 @@ while True:
     show_output()
 
     tmp_t = t
-    tmp_t = int(tmp_t * 100)/100
+    tmp_t = int(tmp_t * 10)/10
     if ( tmp_t == 1.0):
         for i in range(N):
             vx[i] = -1 * vx[i]
@@ -347,4 +347,4 @@ for i in range(ncum):
     im = Image.open(file_name)
     images.append(im)
 
-images[0].save('./t10dt01.gif', save_all=True, append_images=images[1:], loop=0, duration=30)
+images[0].save('./t10dt01.gif', save_all=True, append_images=images[1:], loop=0, duration=100)

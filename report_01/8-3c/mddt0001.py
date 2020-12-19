@@ -317,7 +317,7 @@ while True:
     show_output()
 
     tmp_t = t
-    tmp_t = int(tmp_t * 100)/100
+    tmp_t = int(tmp_t * 10)/10
     if ( tmp_t == 0.5):
         for i in range(N):
             vx[i] = -1 * vx[i]
@@ -326,14 +326,14 @@ while True:
     if ( tmp_t > 1.0):
         break
 
-        plt.figure()
-        plt.scatter(x, y)
-        plt.xlim([0, Lx])
-        plt.ylim([0, Ly])
-        plt.show()
-        plt.savefig(f"../images/8_3_c_{ncum}.png")
-        plt.clf()
-        plt.close()
+    plt.figure()
+    plt.scatter(x, y)
+    plt.xlim([0, Lx])
+    plt.ylim([0, Ly])
+    plt.show()
+    plt.savefig(f"../images/8_3_c_{ncum}.png")
+    plt.clf()
+    plt.close()
 
 ### 生成した画像からgifを生成する
 from PIL import Image
