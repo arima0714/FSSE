@@ -30,4 +30,18 @@ plt.figure()
 plt.plot(time, E_per_m)
 plt.savefig("./Plot_E_per_m.png")
 
-print(f"len(time) = {len(time)}, len(E_per_m) = {len(E_per_m)}")
+# 面積速度のプロットを行う
+lr_list = []
+lr = 0
+def return_deviation_square(num1, num2):
+    return( (num1-num2) ** 2)
+
+for i in range(len(col_x) - 1):
+    lr = (return_deviation_square(col_x[i], col_x[i+1]) + return_deviation_square(col_y[i], col_y[i+1])) ** 0.5
+    lr_list.append(lr)
+
+print(f"len(lr_list) = {len(lr_list)}, len(time) = {len(time[:-1])}")
+
+plt.figure()
+plt.plot(time[:-1], lr_list)
+plt.savefig("Plot_lr.png")
