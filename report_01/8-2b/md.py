@@ -311,13 +311,26 @@ while ncum <= 1000:
     ncum = ncum + 1
     show_output()
 
-    if (ncum % 100 == 0) or (ncum < 100):
-        plt.figure()
-        plt.scatter(x, y)
-        plt.xlim([0, 12])
-        plt.ylim([0, 6])
-        plt.show()
-        plt.savefig(f"../images/b_{ncum}.png")
-        plt.clf()
-        plt.close()
 
+    plt.figure()
+    plt.scatter(x, y)
+    plt.xlim([0, 12])
+    plt.ylim([0, 6])
+    plt.show()
+    plt.savefig(f"../images/8-2b_{ncum}.png")
+    plt.clf()
+    plt.close()
+
+### 生成した画像からgifを生成する
+from PIL import Image
+
+images = []
+
+for i in range(ncum):
+    if i == 0:
+        continue
+    file_name = f"../images/8-2b_{i}.png"
+    im = Image.open(file_name)
+    images.append(im)
+
+images[0].save('./8-2b.gif', save_all=True, append_images=images[1:], loop=0)
