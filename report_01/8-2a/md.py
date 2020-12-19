@@ -35,7 +35,6 @@ kecum = 0
 pecum = 0
 vcum = 0
 area = 0
-pbc = 0
 
 pe = 0
 virial = 0
@@ -50,14 +49,11 @@ pot = 0
 
 
 def initial():
-    global pbc
-    abc = 0
     global dt
     dt = 0.01
     global dt2
     dt2 = dt * dt
 
-    response = ""
     global N
     N = 16
     global Lx
