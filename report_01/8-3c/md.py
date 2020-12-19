@@ -213,6 +213,8 @@ def show_output():
     global N
     global Lx
     global Ly
+    global vx
+    global vy
 
     if(ncum == 1):
         print("ncum,t,E,mean_ke/N,p,ke,pe,n(t)")
@@ -249,6 +251,14 @@ while ncum <= 100000:
     Verlet()
     ncum = ncum + 1
     show_output()
+
+    if ( t == 0.5):
+        for i in range(N):
+            vx[i] = -1 * vx[i]
+            vy[i] = -1 * vy[i]
+
+    if ( t == 1.0):
+        break
 
     if (ncum % 100 == 0) or (ncum < 100):
         plt.figure()
