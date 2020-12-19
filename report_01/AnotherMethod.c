@@ -66,12 +66,14 @@ main ()
   printf ("DEBUG mode \n");
 #endif
 
-  printf ("X, Y\n");
+  double E_per_m = 0.5 * ((v_half[X] * v_half[X]) + (v_half[Y] * v_half[Y])) - GM;
+  printf("X,Y,E/m\n");
 
   for (i = 0; i <= imax; i++)
     {
       AnotherMethod (v_half, z_n, GM, dt);
-      printf ("%f, %f\n",z_n[X], z_n[Y]);
+      E_per_m = 0.5 * ((v_half[X] * v_half[X]) + (v_half[Y] * v_half[Y])) - GM;
+      printf ("%f, %f, %f\n",z_n[X], z_n[Y], E_per_m);
     }
 
   return 0;
