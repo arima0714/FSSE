@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <math.h>
 
-#define IMAX 250
-#define DT 0.01
+#define IMAX 10000
+#define DT 0.001
 
 #define X 0
 #define Y 1
