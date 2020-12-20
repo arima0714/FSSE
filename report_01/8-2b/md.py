@@ -309,15 +309,15 @@ while ncum <= 1000:
     ncum = ncum + 1
     show_output()
 
-
-    plt.figure()
-    plt.scatter(x, y)
-    plt.xlim([0, 12])
-    plt.ylim([0, 6])
-    plt.show()
-    plt.savefig(f"../images/8-2b_{ncum}.png")
-    plt.clf()
-    plt.close()
+    if(ncum == 1 or ncum == 2 or ncum == 500 or ncum == 1000):
+        plt.figure()
+        plt.scatter(x, y)
+        plt.xlim([0, 12])
+        plt.ylim([0, 6])
+        plt.show()
+        plt.savefig(f"../images/8-2b_{ncum}.png")
+        plt.clf()
+        plt.close()
 
 ### 生成した画像からgifを生成する
 from PIL import Image
