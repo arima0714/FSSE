@@ -318,33 +318,38 @@ while True:
 
     tmp_t = t
     tmp_t = int(tmp_t * 100)/100
+
+    if(ncum == 1):
+        plt.figure()
+        plt.scatter(x, y)
+        plt.xlim([0, Lx])
+        plt.ylim([0, Ly])
+        plt.show()
+        plt.savefig(f"../images/8_3_c_md2_first.png")
+        plt.clf()
+        plt.close()
+
     if ( tmp_t == 1.0):
         for i in range(N):
             vx[i] = -1 * vx[i]
             vy[i] = -1 * vy[i]
 
     if ( tmp_t > 2.0):
+        plt.figure()
+        plt.scatter(x, y)
+        plt.xlim([0, Lx])
+        plt.ylim([0, Ly])
+        plt.show()
+        plt.savefig(f"../images/8_3_c_md2_last.png")
+        plt.clf()
+        plt.close()
         break
 
-    plt.figure()
-    plt.scatter(x, y)
-    plt.xlim([0, Lx])
-    plt.ylim([0, Ly])
-    plt.show()
-    plt.savefig(f"../images/8_3_c_{ncum}.png")
-    plt.clf()
-    plt.close()
-
-### 生成した画像からgifを生成する
-from PIL import Image
-
-images = []
-
-for i in range(ncum):
-    if i == 0:
-        continue
-    file_name = f"../images/8_3_c_{i}.png"
-    im = Image.open(file_name)
-    images.append(im)
-
-images[0].save('./t10.gif', save_all=True, append_images=images[1:], loop=0, duration=30)
+        plt.figure()
+        plt.scatter(x, y)
+        plt.xlim([0, Lx])
+        plt.ylim([0, Ly])
+        plt.show()
+        plt.savefig(f"../images/8_3_c_md3_first.png")
+        plt.clf()
+        plt.close()
